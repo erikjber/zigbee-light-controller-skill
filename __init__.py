@@ -6,10 +6,12 @@ class ZigbeeLightController(MycroftSkill):
         MycroftSkill.__init__(self)
 
     def send_command(self,command):
-        process = subprocess.run(['mqttcli', 'pub', '-t', 'zigbee2mqtt/0x680ae2fffe2cc3b4/set', '-m', command],
+        process = subprocess.run(['mqttcli', 'pub', '-t', 'zigbee2mqtt/group_1/set', '-m', command],
                                  stdout=subprocess.PIPE, universal_newlines=True)
-        process = subprocess.run(['mqttcli', 'pub', '-t', 'zigbee2mqtt/0xec1bbdfffeb4c3e5/set', '-m', command],
-                                 stdout=subprocess.PIPE, universal_newlines=True)
+        #process = subprocess.run(['mqttcli', 'pub', '-t', 'zigbee2mqtt/0x680ae2fffe2cc3b4/set', '-m', command],
+        #                         stdout=subprocess.PIPE, universal_newlines=True)
+        #process = subprocess.run(['mqttcli', 'pub', '-t', 'zigbee2mqtt/0xec1bbdfffeb4c3e5/set', '-m', command],
+        #                         stdout=subprocess.PIPE, universal_newlines=True)
 
     @intent_handler('lights.bright.intent')
     def handle_controller_lights_bright(self, message):
